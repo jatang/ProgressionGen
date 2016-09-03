@@ -5,14 +5,14 @@ public class ChordInfo
 {
     private ChordType type;
     private ChordClass chordClass;
-    private int key;
+    //private int key;
     private int inversion;
 
-    public ChordInfo(ChordType type, ChordClass chordClass, int key, int inversion)
+    public ChordInfo(ChordType type, ChordClass chordClass, int inversion)
     {
         this.type = type;
         this.chordClass = chordClass;
-        this.key = key;
+        //this.key = key;
         this.inversion = inversion;
     }
 
@@ -26,10 +26,10 @@ public class ChordInfo
         return chordClass;
     }
 
-    public int getKey()
-    {
-        return key;
-    }
+//    public int getKey()
+//    {
+//        return key;
+//    }
 
     public int getInversion()
     {

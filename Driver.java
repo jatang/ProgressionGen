@@ -1,9 +1,10 @@
 /**
  * Created by Jake on 8/11/2016.
  */
-//FOR NOW: define notes/major keys like so: C = 0, (C# = 0.5,) Db = 1, D = 2, (D# = 2.5,)
-//Eb = 3, E = 4, F = 5, F# = 5.5, Gb = 6, G = 7, (G# = 7.5, ) Ab = 8, A = 9, (A# = 9.5, ) Bb = 10, B = 11
-//This way, enharmonic notes/keys will have equivalent values ONCE ROUNDED TO THE NEAREST 1, but will be otherwise distinguisable
+//FOR NOW: define notes like so: C = 0, (C# = 0.5,) Db = 1, D = 2, (D# = 2.5,)
+//Eb = 3, E = 4, F = 5, (F# = 5.5,) Gb = 6, G = 7, (G# = 7.5, ) Ab = 8, A = 9, (A# = 9.5, ) Bb = 10, B = 11
+//This way, enharmonic notes will have equivalent values ONCE ROUNDED TO THE NEAREST 1, but will be otherwise distinguishable
+//NOTE: all progression-generating operations should work under the assugmption of a single key; chords can then be transposed by directly modifying Hz values
 public class Driver
 {
     public static void main(String[] args)
@@ -16,10 +17,10 @@ public class Driver
     //TODO: implement this method for other chords, like sevenths
     Chord genValidChord(ChordInfo info, Chord previous) {
         int[] pitchClasses = info.getType().structure();
-        int key = info.getKey();
-        for(int i = 0; i < pitchClasses.length; i++) {
-            pitchClasses[i] = (pitchClasses[i] + key) % 12; //We want all C's to have value 0, etc; there are 12 possible pitches, so we perform all pitch class operations mod 12
-        }
+//        int key = info.getKey();
+//        for(int i = 0; i < pitchClasses.length; i++) {
+//            pitchClasses[i] = (pitchClasses[i] + key) % 12; //We want all C's to have value 0, etc; there are 12 possible pitches, so we perform all pitch class operations mod 12
+//        }
         //(1) Find lowest possible pitches each note from previous chord can jump to; then, find the highest
         //(2) Thankfully, the pitch class of the bass note is simple to calculate: pitchClasses[info.getInversion()]
         //(3) Assemble list of candidate pitches for the bass note (select all pitches of correct class within the interval found in (1)), then randomize order.
